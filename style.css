@@ -1537,3 +1537,226 @@ body {
   border-top: 1px solid rgba(255, 105, 180, 0.2);
   padding-top: 2vmin;
 }
+/* ============================= */
+/*  EXTRA SECTION INSIDE LETTER  */
+/* ============================= */
+
+.extra-section {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.extra-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.small-note {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Cards grid */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  text-align: center;
+}
+
+.info-card h4 {
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+}
+
+.info-card p {
+  font-size: 0.7rem;
+}
+
+.info-card span {
+  color: #ffb6c1;
+  font-weight: 600;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Reveal logic */
+
+.info-card .answer {
+  display: none;
+}
+
+.info-card.revealed .question {
+  display: none;
+}
+
+.info-card.revealed .answer {
+  display: block;
+}
+
+/* ============================= */
+/*  SPECIAL ANIMATIONS          */
+/* ============================= */
+
+/* PINK COLOR ANIMATION */
+
+.info-card[data-topic="color"].revealed {
+  background: linear-gradient(135deg, #ffb6c1, #ff80ab, #f48fb1);
+  background-size: 200% 200%;
+  color: #4a0033;
+  animation: colorWave 3s ease-in-out infinite;
+}
+
+@keyframes colorWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* BMW CAR DRIVE ANIMATION */
+
+.info-card[data-topic="car"]::before {
+  content: "";
+  position: absolute;
+  left: -40%;
+  bottom: 4px;
+  width: 170%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.info-card[data-topic="car"]::after {
+  content: "🚗";
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  font-size: 1rem;
+  opacity: 0;
+}
+
+.info-card[data-topic="car"].revealed::before {
+  opacity: 1;
+}
+
+.info-card[data-topic="car"].revealed::after {
+  opacity: 1;
+  animation: driveLoop 2.5s linear infinite;
+}
+
+@keyframes driveLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(220%); }
+}
+
+/* TULIP BLOOM ANIMATION */
+
+.info-card[data-topic="flower"].revealed {
+  animation: bloom 0.7s ease-out;
+  box-shadow: 0 0 12px rgba(255, 236, 179, 0.8);
+}
+
+@keyframes bloom {
+  0% {
+    transform: scale(0.9);
+    filter: brightness(0.9);
+  }
+  60% {
+    transform: scale(1.06);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* ============================= */
+/*  NAME REVEAL STYLING         */
+/* ============================= */
+
+.name-section {
+  text-align: center;
+}
+
+.btn.show-name-btn {
+  margin-top: 4px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #ffb6c1;
+  color: #4a0033;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn.show-name-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: none;
+}
+
+.name-wrapper {
+  margin-top: 10px;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  animation: nameGlow 2.5s ease-in-out infinite;
+}
+
+.name-wrapper.visible {
+  display: inline-flex;
+}
+
+.name-heart {
+  font-size: 0.9rem;
+}
+
+.her-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Glow animation for name */
+
+@keyframes nameGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 192, 203, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(255, 192, 203, 0.9);
+    transform: scale(1.04);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 192, 203, 0.2);
+    transform: scale(1);
+  }
+}
