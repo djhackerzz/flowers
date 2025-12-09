@@ -1,3 +1,19 @@
+let musicPlaying = false;
+
+function toggleMusic() {
+  const music = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+  
+  if (musicPlaying) {
+    music.pause();
+    musicBtn.textContent = '🔇';
+    musicPlaying = false;
+  } else {
+    music.play().catch(e => console.log('Play failed:', e));
+    musicBtn.textContent = '🔊';
+    musicPlaying = true;
+  }
+}
 onload = () => {
   // Prevent layout shifts by setting initial viewport
   const viewport = document.querySelector('meta[name="viewport"]');
