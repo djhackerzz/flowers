@@ -1760,3 +1760,62 @@ body {
     transform: scale(1);
   }
 }
+/* ============================= */
+/*  MULTI-STEP PAGES IN LETTER  */
+/* ============================= */
+
+.steps-container {
+  margin-top: 16px;
+}
+
+.step-screen {
+  display: none;
+  text-align: center;
+}
+
+.step-screen.active {
+  display: block;
+}
+
+.step-title {
+  font-size: 2.6vmin;
+  margin-bottom: 8px;
+}
+
+.step-text {
+  font-size: 2.2vmin;
+  margin-bottom: 8px;
+}
+
+.highlight-pink {
+  color: #FF69B4;
+  font-weight: 600;
+}
+
+.steps-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.step-btn {
+  flex: 1;
+  padding: 6px 0;
+  border-radius: 999px;
+  border: none;
+  font-size: 2vmin;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.step-btn.primary {
+  background: linear-gradient(135deg, #FF69B4, #FFB6C1);
+  color: white;
+}
+
+.step-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
